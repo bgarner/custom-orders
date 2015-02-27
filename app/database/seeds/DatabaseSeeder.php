@@ -11,20 +11,20 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
-		// $this->command->info('User table seeded!');
-		//
-		// $this->call('BrandsTableSeeder');
-		// $this->command->info('Brands table seeded!');
-		//
-		// $this->call('CategoriesTableSeeder');
-		// $this->command->info('Categories table seeded!');
-		//
-		// $this->call('CustomersTableSeeder');
-		// $this->command->info('Customers table seeded!');
+		$this->call('UserTableSeeder');
+		$this->command->info('User table seeded!');
 
-		// $this->call('ProductTableSeeder');
-		// $this->command->info('Product table seeded!');
+		$this->call('BrandsTableSeeder');
+		$this->command->info('Brands table seeded!');
+
+		$this->call('CategoriesTableSeeder');
+		$this->command->info('Categories table seeded!');
+
+		$this->call('CustomersTableSeeder');
+		$this->command->info('Customers table seeded!');
+
+		$this->call('ProductTableSeeder');
+		$this->command->info('Product table seeded!');
 
 		$this->call('OrderTableSeeder');
 		$this->command->info('Order table seeded!');
@@ -154,6 +154,8 @@ class OrderTableSeeder extends Seeder {
 		for($i = 0; $i < 500; $i++) {
 			DB::table('orders')->insert(array(
 				'customer' => $faker->numberBetween(1,1000),
+				'status' => $faker->numberBetween(1,5),
+				'staff' => $faker->numberBetween(2,5),
 				'description' => $faker->paragraph(1)
 			));
 		}

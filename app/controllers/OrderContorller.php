@@ -1,6 +1,6 @@
 <?php
 
-class OrderContorller extends \BaseController {
+class OrderController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +10,7 @@ class OrderContorller extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('orders/orderstable');
 	}
 
 	/**
