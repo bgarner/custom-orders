@@ -23,8 +23,16 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('CustomersTableSeeder');
 		// $this->command->info('Customers table seeded!');
 
-		$this->call('ProductTableSeeder');
-		$this->command->info('Product table seeded!');
+		// $this->call('ProductTableSeeder');
+		// $this->command->info('Product table seeded!');
+
+		$this->call('OrderTableSeeder');
+		$this->command->info('Order table seeded!');
+
+		$this->call('OrderItemTableSeeder');
+		$this->command->info('Order Items table seeded!');
+
+
 	}
 
 }
@@ -129,6 +137,45 @@ class ProductTableSeeder extends Seeder {
 				'description' => $faker->paragraph(4),
 				'price' => $faker->randomFloat(2, 1.00, 2999.99),
 				'available' => '1'
+			));
+		}
+	}
+
+}
+
+class OrderTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('orders');
+
+		$faker = Faker\Factory::create();
+
+		for($i = 0; $i < 500; $i++) {
+			DB::table('orders')->insert(array(
+				'customer' => $faker->numberBetween(1,1000),
+				'description' => $faker->paragraph(1)
+			));
+		}
+	}
+
+}
+
+
+class OrderItemTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('order_items');
+
+		$faker = Faker\Factory::create();
+
+		for($i = 0; $i < 1000; $i++) {
+			DB::table('order_items')->insert(array(
+				'order_id' => $faker->numberBetween(1,500),
+				'product' => $faker->numberBetween(1,1000),
+				'quantity' => $faker->numberBetween(1,3),
+				'description' => $faker->paragraph(1)
 			));
 		}
 	}
