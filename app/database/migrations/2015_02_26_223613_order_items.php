@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Product extends Migration {
+class OrderItems extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,12 @@ class Product extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('products', function($table)
+		Schema::create('order_items', function($table)
 		{
-			$table->increments('id')->index();
-			$table->integer('brand')->references('brands')->on('id');
-			$table->integer('category')->references('categories')->on('id');
-			$table->longText('name');
+			$table->integer('order_id')->references('orders')->on('id');
+			$table->integer('product')->references('products')->on('id');
+			$table->integer('quantity');
 			$table->longText('description');
-			$table->decimal('price', 7, 2);
-			$table->boolean('available');
 			$table->timestamps();
 		});
 	}

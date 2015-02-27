@@ -12,7 +12,12 @@ class OrderStatus extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('order_status', function($table)
+		{
+			$table->increments('id')->index();
+			$table->string('status');
+			$table->timestamps();
+		});
 	}
 
 	/**

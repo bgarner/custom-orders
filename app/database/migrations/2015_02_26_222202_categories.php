@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProductType extends Migration {
+class Categories extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,12 @@ class ProductType extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('categories', function($table)
+		{
+			$table->increments('id')->index();
+			$table->string('category_name');
+			$table->timestamps();
+		});
 	}
 
 	/**

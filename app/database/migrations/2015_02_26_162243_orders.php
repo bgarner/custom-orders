@@ -12,7 +12,13 @@ class Orders extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('orders', function($table)
+		{
+			$table->increments('id')->index();
+			$table->integer('customer')->references('customers')->on('id');
+			$table->longText('description');
+			$table->timestamps();
+		});
 	}
 
 	/**

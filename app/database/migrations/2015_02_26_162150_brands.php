@@ -12,7 +12,12 @@ class Brands extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('brands', function($table)
+		{
+			$table->increments('id')->index();
+			$table->string('brand');
+			$table->timestamps();
+		});
 	}
 
 	/**

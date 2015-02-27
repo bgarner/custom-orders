@@ -1,21 +1,21 @@
 <?php
 
-class DashboardController extends \BaseController {
+class ProductController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /dashboard
+	 * GET /product
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return View::make('dashboard/index');
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /dashboard/create
+	 * GET /product/create
 	 *
 	 * @return Response
 	 */
@@ -26,7 +26,7 @@ class DashboardController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /dashboard
+	 * POST /product
 	 *
 	 * @return Response
 	 */
@@ -37,7 +37,7 @@ class DashboardController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /dashboard/{id}
+	 * GET /product/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -49,7 +49,7 @@ class DashboardController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /dashboard/{id}/edit
+	 * GET /product/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -61,7 +61,7 @@ class DashboardController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /dashboard/{id}
+	 * PUT /product/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,7 +73,7 @@ class DashboardController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /dashboard/{id}
+	 * DELETE /product/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
