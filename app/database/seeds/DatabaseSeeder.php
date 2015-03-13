@@ -10,28 +10,36 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
+		//
+		// $this->call('UserTableSeeder');
+		// $this->command->info('User table seeded!');
+		//
+		// $this->call('BrandsTableSeeder');
+		// $this->command->info('Brands table seeded!');
+		//
+		// $this->call('CategoriesTableSeeder');
+		// $this->command->info('Categories table seeded!');
+		//
+		// $this->call('CustomersTableSeeder');
+		// $this->command->info('Customers table seeded!');
+		//
+		// $this->call('ProductTableSeeder');
+		// $this->command->info('Product table seeded!');
+		//
+		// $this->call('OrderTableSeeder');
+		// $this->command->info('Order table seeded!');
+		//
+		// $this->call('OrderItemTableSeeder');
+		// $this->command->info('Order Items table seeded!');
 
-		$this->call('UserTableSeeder');
-		$this->command->info('User table seeded!');
+		// $this->call('OrderStatusTableSeeder');
+		// $this->command->info('Order Status table seeded!');
 
-		$this->call('BrandsTableSeeder');
-		$this->command->info('Brands table seeded!');
+		// $this->call('OrderHistoryStatusTypesTableSeeder');
+		// $this->command->info('Order History Status Types table seeded!');
 
-		$this->call('CategoriesTableSeeder');
-		$this->command->info('Categories table seeded!');
-
-		$this->call('CustomersTableSeeder');
-		$this->command->info('Customers table seeded!');
-
-		$this->call('ProductTableSeeder');
-		$this->command->info('Product table seeded!');
-
-		$this->call('OrderTableSeeder');
-		$this->command->info('Order table seeded!');
-
-		$this->call('OrderItemTableSeeder');
-		$this->command->info('Order Items table seeded!');
-
+		$this->call('OrderTrackingTableSeeder');
+		$this->command->info('Order Tracking table seeded!');
 
 	}
 
@@ -153,10 +161,12 @@ class OrderTableSeeder extends Seeder {
 
 		for($i = 0; $i < 500; $i++) {
 			DB::table('orders')->insert(array(
-				'customer' => $faker->numberBetween(1,1000),
+				'customer' => $faker->numberBetween(1,100),
 				'status' => $faker->numberBetween(1,5),
 				'staff' => $faker->numberBetween(2,5),
-				'description' => $faker->paragraph(1)
+				'description' => $faker->paragraph(1),
+				'created_at' => $faker->dateTime($max = 'now'),
+				'updated_at' => $faker->dateTime($max = 'now')
 			));
 		}
 	}
@@ -178,6 +188,62 @@ class OrderItemTableSeeder extends Seeder {
 				'product' => $faker->numberBetween(1,1000),
 				'quantity' => $faker->numberBetween(1,3),
 				'description' => $faker->paragraph(1)
+			));
+		}
+	}
+
+}
+
+class OrderStatusTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('order_status');
+		DB::table('order_status')->delete();
+
+		OrderStatus::create(array('id' => 1, 'status' => 'new' ));
+		OrderStatus::create(array('id' => 2, 'status' => 'recieved' ));
+		OrderStatus::create(array('id' => 3, 'status' => 'processed' ));
+		OrderStatus::create(array('id' => 4, 'status' => 'intransit' ));
+		OrderStatus::create(array('id' => 5, 'status' => 'arrived' ));
+
+	}
+}
+
+class OrderHistoryStatusTypesTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('order_history_status_types');
+		DB::table('order_history_status_types')->delete();
+
+		OrderHistoryStatus::create(array('id' => 1, 'shortcode' => 'sent', 'status' => 'order sent' ));
+		OrderHistoryStatus::create(array('id' => 2, 'shortcode' => 'viewed', 'status' => 'order viewed at head office' ));
+		OrderHistoryStatus::create(array('id' => 3, 'shortcode' => 'to_vendor', 'status' => 'order sent to vendor' ));
+		OrderHistoryStatus::create(array('id' => 4, 'shortcode' => 'message', 'status' => 'posted message about order' ));
+		OrderHistoryStatus::create(array('id' => 5, 'shortcode' => 'invoice', 'status' => 'added invoice number to order' ));
+		OrderHistoryStatus::create(array('id' => 6, 'shortcode' => 'shipping', 'status' => 'added shipping information to order' ));
+
+	}
+}
+
+class OrderTrackingTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('order_tracking');
+		DB::table('order_tracking')->delete();
+
+		$faker = Faker\Factory::create();
+
+		for($i = 0; $i < 500; $i++) {
+			DB::table('order_tracking')->insert(array(
+				'order_id' => $faker->numberBetween(1,500),
+				'order_status_type' => $faker->numberBetween(1,6),
+				'user' => $faker->numberBetween(2,5),
+				'description' => $faker->paragraph(1),
+				'created_at' => $faker->dateTime($max = 'now'),
+				'updated_at' => $faker->dateTime($max = 'now')
 			));
 		}
 	}

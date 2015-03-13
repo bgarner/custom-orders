@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Categories extends Migration {
+class CreateOrdersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class Categories extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('categories', function($table)
+		Schema::create('orders', function($table)
 		{
 			$table->increments('id')->index();
-			$table->string('category_name');
+			$table->integer('customer')->references('customers')->on('id');
+			$table->integer('status')->references('order_status')->on('id');
+			$table->integer('staff')->references('users')->on('id');
+			$table->longText('description');
 			$table->timestamps();
 		});
 	}

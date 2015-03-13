@@ -10,7 +10,9 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('orders/orderstable');
+		$orders = Order::paginate(20);
+		return View::make('orders/orderstable')
+			->with('orders', $orders);
 	}
 
 	/**
@@ -21,7 +23,7 @@ class OrderController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+
 	}
 
 	/**
@@ -44,7 +46,13 @@ class OrderController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$order = Order::find($id);
+		$orderitems = OrderItem::show($id);
+		$ordertracking = OrderTracking::show($id);
+		return View::make('orders/orderdetail')
+			->with('order', $order)
+			->with('orderitems', $orderitems)
+			->with('ordertracking', $ordertracking);
 	}
 
 	/**

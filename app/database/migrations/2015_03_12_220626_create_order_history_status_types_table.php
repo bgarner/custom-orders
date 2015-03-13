@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class OrderStatus extends Migration {
+class CreateOrderHistoryStatusTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,15 @@ class OrderStatus extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('order_status', function($table)
+		Schema::create('order_history_status_types', function(Blueprint $table)
 		{
-			$table->increments('id')->index();
+			$table->increments('id');
+			$table->string('shortcode');
 			$table->string('status');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -27,7 +29,7 @@ class OrderStatus extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('order_history_status_types');
 	}
 
 }

@@ -10,6 +10,7 @@
         <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -162,49 +163,61 @@
                                     <div class="box-body table-responsive no-padding">
                                       <table class="table table-hover">
                                         <tbody><tr>
-                                          <th>ID</th>
+                                          <th>Order #</th>
                                           <th>Customer Name</th>
                                           <th>Date</th>
                                           <th>Status</th>
                                           <th>Description</th>
                                         </tr>
+
+                                        @foreach($orders as $order)
+
+                                        <?php
+                                            $customer = Customer::find( $order->customer );
+                                            $status = OrderStatus::find( $order->status );
+
+                                            switch( $status->status ){
+
+                                                case "new":
+                                                    $statusLabelClass = "label-primary";
+                                                break;
+
+                                                case "recieved":
+                                                    $statusLabelClass = "label-info";
+                                                break;
+
+                                                case "processed":
+                                                    $statusLabelClass = "label-warning";
+                                                break;
+
+                                                case "in transit":
+                                                    $statusLabelClass = "label-default";
+                                                break;
+
+                                                case "arrived":
+                                                    $statusLabelClass = "label-success";
+                                                break;
+
+                                                default:
+                                                    $statusLabelClass = "label-primary";
+                                                break;
+                                            }
+                                        ?>
                                         <tr>
-                                          <td><a href="/dev/order-detail.html">183</a></td>
-                                          <td>John D.</td>
-                                          <td>14 Feb 2015</td>
-                                          <td><span class="label label-success">Shipped</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>219</td>
-                                          <td>Alex P.</td>
-                                          <td>16 Feb 2015</td>
-                                          <td><span class="label label-warning">Recieved</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>657</td>
-                                          <td>Bob D.</td>
-                                          <td>15 Feb 2015</td>
-                                          <td><span class="label label-primary">Processed</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>175</td>
-                                          <td>Mike K.</td>
-                                          <td>18 Feb 2015</td>
-                                          <td><span class="label label-info">Completed</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                            <td><a href="/order/{{ $order->id }}">{{ $order->id }}</a></td>
+                                            <td><a href="/customer/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a></td>
+                                            <td>{{ $order->created_at }}</td>
+                                            <td><span class="label {{ $statusLabelClass }}">{{ $status->status }}</span></td>
+                                            <td>{{ $order->description }}</td>
                                         </tr>
 
-                                        <tr>
-                                          <td>175</td>
-                                          <td>Mike L.</td>
-                                          <td>20 Feb 2015</td>
-                                          <td><span class="label label-info">Completed</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
+                                        @endforeach
+
+
                                       </tbody></table>
+
+                                      <?php echo $orders->links(); ?>
+
                                     </div><!-- /.box-body -->
                                   </div><!-- /.box -->
                                 </div>
