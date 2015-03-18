@@ -9,7 +9,8 @@
 	},
 	"require-dev": {
 		"way/generators": "~2.0",
-		"fzaninotto/faker": "~1.4"
+		"fzaninotto/faker": "~1.4",
+		"adamwathan/bootforms": "~0.4"
 	},
 	"autoload": {
 		"classmap": [
