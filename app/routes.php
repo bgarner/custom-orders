@@ -18,11 +18,13 @@ Route::get('/dashboard', 'DashboardController@index');
 /*
 ORDERS
 */
-Route::get('/orders', 'OrderController@index');
-Route::get('/order/{id?}', 'OrderController@show');
+
 //save new order
 Route::get('/order/new', 'OrderController@create');
 Route::put('/order/new', 'OrderController@store');
+//view orders
+Route::get('/orders', 'OrderController@index');
+Route::get('/order/{id?}', 'OrderController@show');
 //update exisitng order
 Route::get('/order/{id?}/update', 'OrderController@edit');
 Route::put('/order/{id?}/update', 'OrderController@update');
@@ -30,11 +32,13 @@ Route::put('/order/{id?}/update', 'OrderController@update');
 /*
 CUSTOMERS
 */
-Route::get('/customers', 'CustomerController@index');
-Route::get('/customer/{id?}', 'CustomerController@show');
+
 //new customer
 Route::get('/customer/new', 'CustomerController@create');
 Route::put('/customer/new', 'CustomerController@store');
+//view customer
+Route::get('/customers', 'CustomerController@index');
+Route::get('/customer/{id?}', 'CustomerController@show');
 //update exisitng customer
 Route::get('/customer/{id?}/update', 'CustomerController@edit');
 Route::put('/customer/{id?}/update', 'CustomerController@update');

@@ -122,8 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'AdamWathan\BootForms\BootFormsServiceProvider'
-
+		'AdamWathan\BootForms\BootFormsServiceProvider',
+		//'nesbot\Carbon\CarbonServiceProvider',
 	),
 
 	/*
@@ -191,6 +191,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'BootForm'			=> 'AdamWathan\BootForms\Facades\BootForm',
+		'Carbon' 			=> 'Carbon\Carbon',
 
 	),
 
