@@ -43,6 +43,7 @@ Orders in Progress
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tbody><tr>
+                      <th></th>
                       <th>Order #</th>
                       <th>Customer</th>
                       <th>Date</th>
@@ -84,7 +85,13 @@ Orders in Progress
                         }
                     ?>
                     <tr>
-                        <td><a href="/order/{{ $order->id }}">{{ $order->id }} View Details</a></td>
+                        <td><a href="/order/{{ $order->id }}">
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span class="fa fa-eye" aria-hidden="true"></span> View
+                            </button>
+                            </a>
+                        </td>
+                        <td><a href="/order/{{ $order->id }}">{{ $order->id }}</a></td>
                         <td><a href="/customer/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a></td>
                         <td>{{ $order->created_at }}</td>
                         <td><span class="label {{ $statusLabelClass }}">{{ $status->status }}</span></td>

@@ -38,8 +38,11 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('OrderHistoryStatusTypesTableSeeder');
 		// $this->command->info('Order History Status Types table seeded!');
 
-		$this->call('OrderTrackingTableSeeder');
-		$this->command->info('Order Tracking table seeded!');
+		// $this->call('OrderTrackingTableSeeder');
+		// $this->command->info('Order Tracking table seeded!');
+
+		$this->call('OrderHistoryTableSeeder');
+		$this->command->info('Order History Table seeded!');
 
 	}
 
@@ -246,6 +249,29 @@ class OrderTrackingTableSeeder extends Seeder {
 				'updated_at' => $faker->dateTime($max = 'now')
 			));
 		}
+	}
+
+}
+
+class OrderHistoryTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('order_history');
+		DB::table('order_history')->delete();
+
+		$faker = Faker\Factory::create();
+
+		for($i = 0; $i < 500; $i++) {
+			DB::table('order_history')->insert(array(
+				'order_id' => $faker->numberBetween(1,500),
+				'status_id' => $faker->numberBetween(1,6),
+				'status_details' => $faker->paragraph(1),
+				'created_at' => $faker->dateTime($max = 'now'),
+				'updated_at' => $faker->dateTime($max = 'now')
+			));
+		}
+
 	}
 
 }

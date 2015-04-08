@@ -8,7 +8,7 @@ class OrderTracking extends \Eloquent {
     {
         $ordertracking = DB::table('order_tracking')
             ->where('order_id', '=', $id)
-            ->orderBy('updated_at', 'ASC')
+            ->orderBy('updated_at', 'DEC')
             ->get();
         return $ordertracking;
     }

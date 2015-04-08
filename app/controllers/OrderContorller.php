@@ -49,9 +49,11 @@ class OrderController extends \BaseController {
 		$order = Order::find($id);
 		$orderitems = OrderItem::show($id);
 		$ordertracking = OrderTracking::show($id);
+		$ordertrackingstatus = OrderHistoryStatus::all();
 		return View::make('orders/orderdetail')
 			->with('order', $order)
 			->with('orderitems', $orderitems)
+			->with('ordertrackingstatus', $ordertrackingstatus)
 			->with('ordertracking', $ordertracking);
 	}
 
