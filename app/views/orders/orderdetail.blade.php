@@ -41,6 +41,7 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
         </li>
         <!-- /.timeline-label -->
         @foreach( $ordertracking as $orderevent )
+
         <!-- timeline item -->
         <li>
         <?php

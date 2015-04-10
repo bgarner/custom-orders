@@ -19,11 +19,16 @@
     <body class="skin-black">
 
         <div class="form-box" id="login-box" style="box-shadow: 5px 5px 20px #333;">
-            <div class="header">Sign In</div>
-            <form action="" method="post">
+            <div class="header"><img src="/img/login-logo.png"><br />Sign In</div>
+            {{ Form::open(array('url' => 'login')) }}
                 <div class="body bg-gray">
+                    @if(sizeof($errors) > 1)
+                        {{ $errors->first('email') }}<br />
+                        {{ $errors->first('password') }}
+                    @endif
                     <div class="form-group">
-                        <input type="text" name="userid" class="form-control" placeholder="User ID"/>
+                        <!-- <input type="text" name="userid" class="form-control" placeholder="User ID"/> -->
+                        <input id="email" name="email" class="form-control" type="text" placeholder="E-mail">
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password"/>
@@ -31,12 +36,12 @@
 
                 </div>
                 <div class="footer">
-                    <a href="/dashboard" class="btn bg-olive btn-block">Sign me in</a>
-
+                    <!-- <a href="/dashboard" class="btn bg-olive btn-block">Sign me in</a> -->
+                    <button class="btn bg-olive btn-block">Sign In</button>
                     <p><a href="#">I forgot my password</a></p>
 
                 </div>
-            </form>
+            {{ Form::close() }}
 
 
         </div>
