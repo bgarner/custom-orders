@@ -15,12 +15,13 @@ class BaseController extends Controller {
 		}
 	}
 
-	protected function showLogin(){
+	protected function showLogin()
+	{
 		return View::make('login/index');
 	}
 
-	protected function doLogin(){
-
+	protected function doLogin()
+	{
 		$fail_redirect = "/";
 		$success_redirect = "/orders";
 

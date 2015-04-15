@@ -1,7 +1,7 @@
 @extends('template/masterlayout')
 
 @section('title')
-Orders in Progress
+Orders for {{ Auth::user()->store; }}
 @stop
 
 @section('breadcrumb')
@@ -45,9 +45,11 @@ Orders in Progress
                     <tbody><tr>
                       <th></th>
                       <th>Order #</th>
-                      <th>Customer</th>
-                      <th>Date</th>
                       <th>Status</th>
+                      <th>Customer</th>
+                      <th>Staff</th>
+                      <th>Date</th>
+
                       <th>Description</th>
                     </tr>
 
@@ -56,6 +58,7 @@ Orders in Progress
                     <?php
                         $customer = Customer::find( $order->customer );
                         $status = OrderStatus::find( $order->status );
+                        $staff = User::find( $order->staff );
 
                         switch( $status->status ){
 
@@ -92,10 +95,12 @@ Orders in Progress
                             </a>
                         </td>
                         <td><a href="/order/{{ $order->id }}">{{ $order->id }}</a></td>
-                        <td><a href="/customer/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a></td>
-                        <td>{{ $order->created_at }}</td>
                         <td><span class="label {{ $statusLabelClass }}">{{ $status->status }}</span></td>
-                        <td>{{ $order->description }}</td>
+                        <td><a href="/customer/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a></td>
+                        <td>{{ $staff->first_name }} {{ $staff->last_name }}</td>
+                        <td>{{ $order->created_at }}</td>
+
+                        <td>{{ str_limit($order->description, $limit = 60, $end = '...') }}</td>
                     </tr>
 
                     @endforeach

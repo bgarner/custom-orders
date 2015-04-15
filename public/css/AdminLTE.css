@@ -2727,6 +2727,7 @@ Component: timeline
 .skin-black .logo {
   background-color: #333333;
   color: #f9f9f9;
+  /*background: url('/img/left-logo.png') top left no-repeat;*/
 }
 .skin-black .logo > a {
   color: #f9f9f9;

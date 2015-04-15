@@ -21,7 +21,7 @@ class CustomerController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('customers/new');
 	}
 
 	/**
@@ -56,7 +56,7 @@ class CustomerController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return View::make('customers/edit');
 	}
 
 	/**
@@ -81,6 +81,68 @@ class CustomerController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function customerLookUp()
+	{
+		$this->layout = null;
+		$email = Input::get('returningCustomerEmail');
+		// dd($email);
+		if(Request::ajax()){
+
+			$customer = Customer::getCustomerByEmail( $email );
+
+			// $customerName =  $customer->first_name . " " . $customer->last_name;
+
+			if( count($customer) > 0) {
+				Log::info( $customer[0]->first_name );
+
+				$customerName = $customer[0]->first_name . " " . $customer[0]->last_name;
+				if($customer[0]->address2 != ""){
+					$customerAddress = $customer[0]->address1 . "<br />" . $customer[0]->address2;
+				} else {
+					$customerAddress = $customer[0]->address1;
+				}
+				$customerCity = $customer[0]->city;
+				$customerProv = $customer[0]->province;
+				$customerPC = $customer[0]->postal_code;
+				$customerHome = $customer[0]->home_phone;
+				$customerWork = $customer[0]->work_phone;
+				$customerCell = $customer[0]->cell_phone;
+				$customerEmail = $customer[0]->email;
+
+				$response = array(
+					'status' => 'success',
+					'msg' => 'found this person',
+					'customername' => $customerName,
+					'customeraddress' => $customerAddress,
+					'customercity' => $customerCity,
+					'customerprov' => $customerProv,
+					'customerpc' => $customerPC,
+					'customerhomephone' => $customerHome,
+					'customerworkphone' => $customerWork,
+					'customercellphone' => $customerCell,
+					'customeremail' => $customerEmail
+				);
+				return Response::json($response);
+			} else {
+				$response = array(
+					'status' => 'Customer not found. Try again, or create a new record.',
+					'msg' => 'not found',
+				);
+				return Response::json($response);
+			}
+
+		} else {
+			return "I don't know if this is ajaxing";
+		}
+
+
+		// if( count($customer) > 0) {
+		// 	return "got it";
+		// } else {
+		// 	return "customer not found";
+		// }
 	}
 
 }

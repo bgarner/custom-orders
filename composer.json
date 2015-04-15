@@ -11,7 +11,8 @@
 		"way/generators": "~2.0",
 		"fzaninotto/faker": "~1.4",
 		"adamwathan/bootforms": "~0.4",
-		"nesbot/carbon": "~1.14"
+		"nesbot/carbon": "~1.14",
+		"barryvdh/laravel-debugbar": "~1.8"
 	},
 	"autoload": {
 		"classmap": [

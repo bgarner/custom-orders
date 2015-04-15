@@ -1,41 +1,88 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <!-- Ionicons -->
-        <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+@extends('template/masterlayout')
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body class="skin-black">
+@section('title')
+New Order
+@stop
 
-        {{ BootForm::open() }}
-          {{ BootForm::text('First Name', 'first_name') }}
-          {{ BootForm::text('Last Name', 'last_name') }}
-          {{ BootForm::text('Date of Birth', 'date_of_birth') }}
-          {{ BootForm::email('Email', 'email') }}
-          {{ BootForm::password('Password', 'password') }}
-          {{ BootForm::submit('Submit') }}
-        {{ BootForm::close() }}
+@section('breadcrumb')
+<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+<li><a href="/orders">Orders</a></li>
+<li class="active"> @yield('title') </li>
+@stop
+
+@section('main')
+<script>
+
+function showNewCustomerForm()
+{
+    $( "#newCustomerForm" ).hide();
+    $( "#existingCustomerForm" ).hide();
+
+    $( "#newCustomerForm" ).show();
+}
+
+function showExisitngCustomerForm()
+{
+    $( "#newCustomerForm" ).hide();
+    $( "#existingCustomerForm" ).hide();
+
+    $( "#existingCustomerForm" ).show();
+}
+
+</script>
+
+<h2>Customer Information</h2>
+<button onclick="javascript:showNewCustomerForm();">New Customer</button>
+<button onclick="javascript:showExisitngCustomerForm();">Returning Customer</button>
+
+<form id="newCustomerForm" style="display: none;">
+    <h3>New Customer</h3>
+
+    <div class="row">
+        <div class="col-md-2">
+            <label class="form-label">Prefix</label>
+            <select class="form-control">
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Dr.">Dr.</option>
+            </select>
+        </div>
+
+        <div class="col-md-5">
+            <label class="form-label"><span class="req">*</span> First Name</label> <input type="text" class="form-control" id="first_name" name="first_name" />
+        </div>
+        <div class="col-md-5">
+            <label class="form-label"><span class="req">*</span> Last Name</label> <input type="text" class="form-control" id="last_name" name="last_name" />
+        </div>
+    </div>
+
+    <label class="form-label"><span class="req">*</span> E-mail</label><input type="text" class="form-control" id="email" name="email" />
+    <label class="form-label">Address 1</label><input type="text" class="form-control" id="address1" name="address1" />
+    <label class="form-label">Address 2</label><input type="text" class="form-control" id="address2" name="address2" />
+    <label class="form-label"><span class="req">*</span> City</label><input type="text" class="form-control" id="city" name="city" />
+    <label class="form-label"><span class="req">*</span> Province</label><input type="text" class="form-control" id="province" name="province" />
+    <label class="form-label">Postal Code</label><input type="text" class="form-control" id="postal_code" name="postal_code" />
+    <label class="form-label"><span class="req">*</span> Home Phone</label><input type="text" class="form-control" id="home_phone" name="home_phone" />
+    <label class="form-label">Work Phone</label><input type="text" class="form-control" id="work_phone" name="work_phone" />
+    <label class="form-label">Cell Phone</label><input type="text" class="form-control" id="cell_phone" name="cell_phone" />
+
+    <!-- </div> -->
+
+</form>
 
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="/js/AdminLTE/app.js" type="text/javascript"></script>
+<form id="existingCustomerForm" style="display: none;">
+    <h3>Returning Customer</h3>
+    <label class="form-label">E-mail Address</label><input type="text" id="returningCustomerEmail" name="returningCustomerEmail" />
+    <button class="btn btn-main btn-large" id="existingCustomerFormSubmit">Look Up</button>
 
+    <div id="customerinfo">
 
-    </body>
-</html>
+    </div>
+</form>
+@stop
+
+@section('javascript')
+<script src="/js/customerLookUp.js" type="text/javascript"></script>
+@stop

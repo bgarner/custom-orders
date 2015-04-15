@@ -2,7 +2,7 @@
 <header class="header">
     <a href="/" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        <!-- AdminLTE -->
+        <img src='/img/left-logo.png' />
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -25,13 +25,13 @@
                 <li class="dropdown user user-menu">
                     <a href="#">
                         <i class="glyphicon glyphicon-user"></i>
-                        <span>Matt McBride 314 </span>
+                        <span>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} {{ Auth::user()->store }}</span>
                     </a>
 
                 </li>
-                
+
             </ul>
-            <a href="#" style="position: relative; top: 14px; right: 18px;" class="btn btn-xs btn-default">Sign out</a>
+            <a href="/logout" style="position: relative; top: 14px; right: 18px;" class="btn btn-xs btn-default">Sign out</a>
         </div>
     </nav>
 </header>

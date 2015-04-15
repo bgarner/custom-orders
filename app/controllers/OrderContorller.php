@@ -10,7 +10,11 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		$orders = Order::paginate(20);
+		$store_number = Auth::user()->store;
+
+		$orders = Order::getOrders( $store_number );
+		//$orders = Order::paginate(20);
+//		dd($orders);
 		return View::make('orders/orderstable')
 			->with('orders', $orders);
 	}

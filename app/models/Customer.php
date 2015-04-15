@@ -9,4 +9,12 @@ class Customer extends \Eloquent {
 	{
 
 	}
+
+	protected static function getCustomerByEmail($email)
+	{
+		$customer = DB::table('customers')
+				->where('email', '=', $email)
+				->get();
+		return $customer;
+	}
 }

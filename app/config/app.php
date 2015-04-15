@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'AdamWathan\BootForms\BootFormsServiceProvider',
+		//'Barryvdh\Debugbar\ServiceProvider',
 		//'nesbot\Carbon\CarbonServiceProvider',
 	),
 
@@ -192,6 +193,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 		'BootForm'			=> 'AdamWathan\BootForms\Facades\BootForm',
 		'Carbon' 			=> 'Carbon\Carbon',
+		//'Debugbar' 			=> 'Barryvdh\Debugbar\Facade',
 
 	),
 
