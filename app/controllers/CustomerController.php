@@ -103,6 +103,7 @@ class CustomerController extends \BaseController {
 				} else {
 					$customerAddress = $customer[0]->address1;
 				}
+				$customerId = $customer[0]->id;
 				$customerCity = $customer[0]->city;
 				$customerProv = $customer[0]->province;
 				$customerPC = $customer[0]->postal_code;
@@ -122,7 +123,8 @@ class CustomerController extends \BaseController {
 					'customerhomephone' => $customerHome,
 					'customerworkphone' => $customerWork,
 					'customercellphone' => $customerCell,
-					'customeremail' => $customerEmail
+					'customeremail' => $customerEmail,
+					'customerid' => $customerId
 				);
 				return Response::json($response);
 			} else {

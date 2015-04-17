@@ -22,6 +22,7 @@ ORDERS
 //save new order
 
 Route::get('/order/new', array('before' => 'auth', 'uses' => 'OrderController@create'));
+Route::post('/order/new/form', 'OrderController@newForm');
 //Route::get('/order/new', 'OrderController@create');
 Route::put('/order/new', 'OrderController@store');
 //view orders
@@ -30,9 +31,9 @@ Route::get('/orders', array('before' => 'auth', 'uses' => 'OrderController@index
 //Route::get('/order/{id?}', 'OrderController@show');
 Route::get('/order/{id?}', array('before' => 'auth', 'uses' => 'OrderController@show'));
 //update exisitng order
-Route::get('/order/{id?}/update', 'OrderController@edit');
-Route::put('/order/{id?}/update', 'OrderController@update');
-
+// Route::get('/order/{id?}/update', 'OrderController@edit');
+// Route::put('/order/{id?}/update', 'OrderController@update');
+Route::post('/order/postStatus', 'OrderController@postOrderStatus');
 /*
 CUSTOMERS
 */
@@ -48,8 +49,8 @@ Route::post('/customer/lookup', 'CustomerController@customerLookUp');
 Route::get('/customers', 'CustomerController@index');
 Route::get('/customer/{id?}', 'CustomerController@show');
 //update exisitng customer
-Route::get('/customer/{id?}/update', 'CustomerController@edit');
-Route::put('/customer/{id?}/update', 'CustomerController@update');
+Route::get('/customer/edit/{id?}/', 'CustomerController@edit');
+Route::put('/customer/edit/{id?}', 'CustomerController@update');
 
 /*
 PRODUCTS

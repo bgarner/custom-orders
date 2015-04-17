@@ -109,7 +109,7 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
         @endforeach
 
         <!-- END timeline item -->
-        <li>
+        <li id="statusUpdateForm">
           <i class="fa fa-clock-o bg-gray"></i>
           <?php
           $statuses = Array();
@@ -118,7 +118,7 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
             }
           ?>
             <div class="timeline-item" style="padding-left: 20px; padding-bottom: 15px;">
-                {{ Form::open(array('url' => 'foo/bar')) }}
+                <form id="postOrderStatus">
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Post an Update</h4>
@@ -126,6 +126,8 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
                 </div>
 
                 <div class="row">
+                    <input type="hidden" id="user" name="user" value="{{ Auth::user()->id }}" />
+                    <input type="hidden" id="order_id" name="order_id" value="{{ $order->id }}" />
                     <div class="col-md-2">
                         {{ Form::label('status', 'Status') }}<br />
                         {{ Form::select('status', $statuses); }}<br />
@@ -155,11 +157,11 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
                         {{ Form::label('ho_notify', 'Notify Head Office') }}
 
                         <br />
-                        <button type="button" class="btn btn-primary btn-lg pull-right">Post</button>
+                        <button type="button" id="postOrderStatusSubmit" class="btn btn-primary btn-lg pull-right">Post</button>
                         <!-- {{ Form::submit('Post'); }} -->
                     </div>
                 </div>
-                {{ Form::close() }}
+                </form>
             </div>
         </li>
       </ul>
@@ -342,4 +344,8 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
     </table> -->
 
 
+@stop
+
+@section('javascript')
+<script src="/js/postOrderStatusUpdate.js" type="text/javascript"></script>
 @stop

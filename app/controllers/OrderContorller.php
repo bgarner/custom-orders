@@ -11,10 +11,7 @@ class OrderController extends \BaseController {
 	public function index()
 	{
 		$store_number = Auth::user()->store;
-
 		$orders = Order::getOrders( $store_number );
-		//$orders = Order::paginate(20);
-//		dd($orders);
 		return View::make('orders/orderstable')
 			->with('orders', $orders);
 	}
@@ -30,6 +27,15 @@ class OrderController extends \BaseController {
 		return View::make('orders/new');
 	}
 
+
+	public function newForm()
+	{
+		$cutomerId = Input::get('customerId');
+		//get customer info
+		$customer = Customer::find($cutomerId);
+		return View::make('orders/orderform')
+			->with('customer', $customer);
+	}
 	/**
 	 * Store a newly created resource in storage.
 	 * POST /ordercontorller
@@ -54,6 +60,7 @@ class OrderController extends \BaseController {
 		$orderitems = OrderItem::show($id);
 		$ordertracking = OrderTracking::show($id);
 		$ordertrackingstatus = OrderHistoryStatus::all();
+		//$ordertrackingstatus = OrderHistoryStatus::orderBy('created_at', 'asc')->get();
 		return View::make('orders/orderdetail')
 			->with('order', $order)
 			->with('orderitems', $orderitems)
@@ -70,7 +77,8 @@ class OrderController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
+
 	}
 
 	/**
@@ -97,4 +105,17 @@ class OrderController extends \BaseController {
 		//
 	}
 
+
+	public function postOrderStatus()
+	{
+		$orderstatusdetails = array(
+			'order_id' => Input::get('order_id'),
+			'user' => Input::get('user'),
+			'order_status_type' => Input::get('order_status_type'),
+			'description' => Input::get('description')
+		);
+
+		$orderstatus = OrderTracking::create($orderstatusdetails);
+		$orderstatus->save();
+	}
 }
