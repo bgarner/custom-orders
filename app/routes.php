@@ -47,7 +47,7 @@ Route::post('/customer/lookup', 'CustomerController@customerLookUp');
 
 //view customer
 Route::get('/customers', 'CustomerController@index');
-Route::get('/customer/{id?}', 'CustomerController@show');
+Route::get('/customer/{id?}', array('before' => 'auth', 'uses' => 'CustomerController@show'));
 //update exisitng customer
 Route::get('/customer/edit/{id?}/', 'CustomerController@edit');
 Route::put('/customer/edit/{id?}', 'CustomerController@update');

@@ -13,4 +13,12 @@ class Order extends \Eloquent {
 
 		return $orders;
 	}
+
+	protected function getCustomerOrders( $custid )
+	{
+		$orders = DB::table('orders')
+			->where('customer', '=', $custid)
+			->get();
+		return $orders;
+	}
 }

@@ -44,7 +44,22 @@ class CustomerController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$customer = Customer::find($id);
+		$orders = Order::getCustomerOrders($id);
+		// $order = Order::find($id);
+		// $orderitems = OrderItem::show($id);
+		// $ordertracking = OrderTracking::show($id);
+		// $ordertrackingstatus = OrderHistoryStatus::all();
+		//$ordertrackingstatus = OrderHistoryStatus::orderBy('created_at', 'asc')->get();
+		// return View::make('orders/orderdetail')
+		// 	->with('order', $order)
+		// 	->with('orderitems', $orderitems)
+		// 	->with('ordertrackingstatus', $ordertrackingstatus)
+		// 	->with('ordertracking', $ordertracking);
+
+		return View::make('customers/profile')
+			->with('customer', $customer)
+			->with('orders', $orders);
 	}
 
 	/**
