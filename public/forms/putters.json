@@ -1,0 +1,71 @@
+{
+	"type": "Putters",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Length":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"28 inches": "28",
+				"29 inches": "29",
+				"30 inches": "30",
+				"31 inches": "31",
+				"32 inches": "32",
+				"33 inches": "33",
+				"34 inches": "34",
+				"35 inches": "35",
+				"36 inches": "36",
+				"37 inches": "37",
+				"38 inches": "38",
+				"39 inches": "39",
+				"40 inches": "40",
+				"41 inches": "41",
+				"42 inches": "42",
+				"Other": ""
+			},
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"Superstroke 2.0 XL (2015)": "Superstroke 2.0 XL (2015)",
+				"Superstroke 3.0 XL (2015)": "Superstroke 3.0 XL (2015)",
+				"Superstroke Flatso 2.0 XL (2015)": "Superstroke Flatso 2.0 XL (2015)",
+				"Superstroke Flatso 1.0 (2015)": "Superstroke Flatso 1.0 (2015)",
+				"Superstroke Flatso 2.0 (2015)": "Superstroke Flatso 2.0 (2015)",
+				"Superstroke Flatso 3.0 (2015)": "Superstroke Flatso 3.0 (2015)",
+				"Superstroke Flatso 5.0 (2015)": "Superstroke Flatso 5.0 (2015)",
+				"Superstroke Slim 3.0 (2015)": "Superstroke Slim 3.0 (2015)",
+				"Superstroke Mid Slim 2.0 (2015)": "Superstroke Mid Slim 2.0 (2015)",
+				"Superstroke Ultra Slim 1.0 (2015)": "Superstroke Ultra Slim 1.0 (2015)",
+				"Superstroke SS2R Squared (2015)": "Superstroke SS2R Squared (2015)",
+				"Superstroke Belly 17” (2014)": "Superstroke Belly 17” (2014)",
+				"Superstroke Belly 21” (2014)": "Superstroke Belly 21” (2014)",
+				"Superstroke Fatso Ultra 1.1 (2014)": "Superstroke Fatso Ultra 1.1 (2014)",
+				"Superstroke Fatso MID 1.4 (2014)": "Superstroke Fatso MID 1.4 (2014)",
+				"Superstroke Fatso 1.7 (2014)": "Superstroke Fatso 1.7 (2014)",
+				"Superstroke The Claw (2014)": "Superstroke The Claw (2014)",
+				"Superstroke Split Grip (2014)": "Superstroke Split Grip (2014)",
+				"Other": ""
+			},
+		},
+	},
+}

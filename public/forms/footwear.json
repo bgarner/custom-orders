@@ -1,0 +1,16 @@
+{
+	"type": "Footwear",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Size":{
+			"type": "text",
+			"required": true
+		},
+		"Custom Fitting - MyJoys Custom ID":{
+			"type": "text",
+			"required": false
+		},
+	},
+}

@@ -3,3 +3,8 @@
 .label{ text-transform: uppercase; }
 .form-label{ text-transform: uppercase; font-size: 10px; }
 .req{ color: #c00; }
+
+.label-completed{
+    background-color: #000;
+    color: #fff;
+}

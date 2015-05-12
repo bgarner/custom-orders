@@ -23,7 +23,7 @@ class BaseController extends Controller {
 	protected function doLogin()
 	{
 		$fail_redirect = "/";
-		$success_redirect = "/orders";
+		$success_redirect = "/dashboard";
 
 		// validate the info, create rules for the inputs
 		$rules = array(

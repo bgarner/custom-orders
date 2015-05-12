@@ -26,13 +26,13 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li>
-                <a href="/dev/landing-page.html">
+                <a href="/dashboard">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="/dev/sales.html">
+                <a href="/sales">
                     <i class="fa fa-bar-chart-o"></i>
                     <span>Sales</span>
 
@@ -46,12 +46,12 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/dev/clubs.html"><i class="fa fa-angle-double-right"></i> Clubs</a></li>
-                    <li><a href="/dev/balls.html"><i class="fa fa-angle-double-right"></i> Balls</a></li>
+                    <li><a href="/order/new"><i class="fa fa-angle-double-right"></i> Clubs</a></li>
+                    <li><a href="/order/new"><i class="fa fa-angle-double-right"></i> Balls</a></li>
                 </ul>
             </li>
             <li class="active">
-                <a href="/dev/orders.html">
+                <a href="/orders">
                     <i class="fa fa-table"></i> <span>Orders in Progress</span>
 
                 </a>

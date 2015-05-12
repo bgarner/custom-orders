@@ -1,12 +1,17 @@
 @extends('template/masterlayout')
 
 @section('title')
-Orders for {{ Auth::user()->store; }}
-@stop
 
+@stop
+<?php
+$storenumber = Auth::user()->store;
+if( $storenumber == "99999") {
+    $storenumber = "All Stores";
+}
+?>
 @section('breadcrumb')
-<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-<li class="active"> @yield('title') </li>
+<li><a href="/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+<li class="active"> Orders for  </li>
 @stop
 
 @section('main')
@@ -15,6 +20,7 @@ Orders for {{ Auth::user()->store; }}
               <div class="box">
                 <div class="box-header">
                   <div class="box-title">
+                      Orders for {{ $storenumber }}
                       <!-- SHOW ONLY:
                       <a href=""><span class="label label-primary">new</span></a>
                       <a href=""><span class="label label-info">recieved</span></a>
@@ -22,13 +28,17 @@ Orders for {{ Auth::user()->store; }}
                       <a href=""><span class="label label-default">in transit</span></a>
                       <a href=""><span class="label label-success">arrived</span></a>
                       <a href=""><span class="label label-danger">completed</span></a> -->
+
                         <small>
-                            <span class="label label-primary">new</span>
-                            <span class="label label-info">recieved</span>
+                            @foreach ($types as $t )
+                                <a href="/orders/{{ $t->id }}"><span class="label label-primary">{{ $t->status }}</span></a>
+                            @endforeach
+
+                            <!-- <span class="label label-info">recieved</span>
                             <span class="label label-warning">processed</span>
                             <span class="label label-default">in transit</span>
                             <span class="label label-success">arrived</span>
-                            <span class="label label-danger">completed</span>
+                            <span class="label label-danger">completed</span> -->
                         </small>
                   </div>
                   <div class="box-tools">
@@ -80,6 +90,10 @@ Orders for {{ Auth::user()->store; }}
 
                             case "arrived":
                                 $statusLabelClass = "label-success";
+                            break;
+
+                            case "completed":
+                                $statusLabelClass = "label-completed";
                             break;
 
                             default:

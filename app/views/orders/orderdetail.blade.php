@@ -18,7 +18,7 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
 @stop
 
 @section('breadcrumb')
-<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+<li><a href="/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
 <li><a href="/orders">Orders in Progress</a></li>
 <li class="active"> @yield('title') </li>
 @stop
@@ -32,12 +32,47 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
 <div class="row">
     <div class="col-md-12">
       <!-- The time line -->
+
       <ul class="timeline">
         <!-- timeline time label -->
         <li class="time-label">
-          <span class="bg-blue">
-              &nbsp; <i class="fa fa-thumbs-up"></i> &nbsp; Order Placed on {{ $order->created_at }} by <a href="mailto:{{ $staff->email }}" style="color: #fff; font-weight: bold; text-decoration: underline;">{{ $staff->first_name }} {{ $staff->last_name }}</a>
-          </span>
+        <?php
+            switch( $order->status ){
+                case 1: //new
+                    $statusClass = "label-primary";
+                    break;
+
+                case 2: //recieved
+                    $statusClass = "label-info";
+                    break;
+
+                case 3: //processed
+                    $statusClass = "label-warning";
+                    break;
+
+                case 4: //in transit
+                    $statusClass = "label-default";
+                    break;
+
+                case 5: //arrived
+                    $statusClass = "label-success";
+                    break;
+
+                case 6: //completed
+                    $statusClass = "label-completed";
+                    break;
+
+                default:
+                    $statusClass = "label-primary";
+                    break;
+            }
+        ?>
+            <h3 class="pull-right">Order Status: <span class="label {{ $statusClass }}" id="order-status">{{ OrderStatus::lookUpStatus($order->status) }}</span></h3>
+
+            <span class="bg-blue">
+                &nbsp; <i class="fa fa-thumbs-up"></i> &nbsp; Order Placed on {{ $order->created_at }} by <a href="mailto:{{ $staff->email }}" style="color: #fff; font-weight: bold; text-decoration: underline;">{{ $staff->first_name }} {{ $staff->last_name }}</a>
+            </span>
+
         </li>
         <!-- /.timeline-label -->
         @foreach( $ordertracking as $orderevent )
@@ -112,10 +147,17 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
         <li id="statusUpdateForm">
           <i class="fa fa-clock-o bg-gray"></i>
           <?php
-          $statuses = Array();
-          foreach($ordertrackingstatus as $status) {
-              $statuses[$status->id] = $status->shortcode;
+            $statuses = Array();
+            foreach($ordertrackingstatus as $status) {
+                $statuses[$status->id] = $status->shortcode;
             }
+
+            $orderstatus = Array();
+            $orderstatus[0] = 'unchanged';
+            foreach($orderstatustypes as $os) {
+                $orderstatus[$os->id] = $os->status;
+            }
+
           ?>
             <div class="timeline-item" style="padding-left: 20px; padding-bottom: 15px;">
                 <form id="postOrderStatus">
@@ -129,8 +171,11 @@ Order Detail &mdash; Order #{{ $order->id }} {{ $customer->first_name }} {{ $cus
                     <input type="hidden" id="user" name="user" value="{{ Auth::user()->id }}" />
                     <input type="hidden" id="order_id" name="order_id" value="{{ $order->id }}" />
                     <div class="col-md-2">
-                        {{ Form::label('status', 'Status') }}<br />
+                        {{ Form::label('status', 'Update Type') }}<br />
                         {{ Form::select('status', $statuses); }}<br />
+                        <br />
+                        {{ Form::label('orderstatus', 'Order Status') }}<br />
+                        {{ Form::select('orderstatus', $orderstatus); }}<br />
                     </div>
 
                     <div class="col-md-8">

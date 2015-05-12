@@ -1,3 +1,9 @@
+<?php
+
+if( Auth::user()->store == "99999") {
+    $storenumber = "Head Office";
+}
+?>
 <!-- header logo: style can be found in header.less -->
 <header class="header">
     <a href="/" class="logo">
@@ -25,7 +31,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#">
                         <i class="glyphicon glyphicon-user"></i>
-                        <span>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} {{ Auth::user()->store }}</span>
+                        <span>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - {{ $storenumber }}</span>
                     </a>
 
                 </li>

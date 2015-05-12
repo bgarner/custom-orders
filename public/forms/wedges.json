@@ -1,0 +1,89 @@
+{
+	"type": "Wedges",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Shaft Flex":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Regular": "Regular",
+				"Stiff": "Stiff",
+				"X Flex": "X Flex",
+				"L Flex": "L Flex",
+				"Senior": "Senior"
+			},
+		},
+		"Shaft Material":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Steel": "Steel",
+				"Graphite": "Graphite"
+			},
+		},
+
+		"Loft":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"PW": "PW",
+				"AW": "AW",
+				"SW": "SW",
+				"LW": "LW",
+				"45": "45",
+				"46": "46",
+				"47": "47",
+				"48": "48",
+				"49": "49",
+				"50": "50",
+				"51": "51",
+				"52": "52",
+				"53": "53",
+				"54": "54",
+				"55": "55",
+				"56": "56",
+				"58": "58",
+				"60": "60",
+				"62": "62",
+				"64": "64",
+				"Other": ""
+			},
+		},
+		"Custom Fitting - Length":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Shaft":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"1 Wrap": "1 Wrap",
+				"2 Wraps": "2 Wraps",
+				"3 Wraps": "3 Wraps",
+				"4 Wraps": "4 Wraps"
+			},
+		},
+	},
+}

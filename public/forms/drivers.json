@@ -1,0 +1,73 @@
+{
+	"type": "Drivers",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Shaft Flex":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Regular": "Regular",
+				"Stiff": "Stiff",
+				"X Flex": "X Flex",
+				"L Flex": "L Flex",
+				"Senior": "Senior"
+			},
+		},
+		"Loft":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"8.0": "8.0",
+				"8.5": "8.5",
+				"9.0": "9.0",
+				"9.5": "9.5",
+				"10": "10",
+				"10.5": "10.5",
+				"11": "11",
+				"11.5": "11.5",
+				"12": "12",
+				"12.5": "12.5",
+				"13": "13",
+				"13.5": "13.5",
+				"14": "14",
+				"HT": "HT"
+			},
+		},
+		"Custom Fitting - Length":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Shaft":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"1 Wrap": "1 Wrap",
+				"2 Wraps": "2 Wraps",
+				"3 Wraps": "3 Wraps",
+				"4 Wraps": "4 Wraps"
+			},
+		},
+	},
+}

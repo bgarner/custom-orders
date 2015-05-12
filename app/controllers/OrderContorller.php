@@ -11,11 +11,28 @@ class OrderController extends \BaseController {
 	public function index()
 	{
 		$store_number = Auth::user()->store;
-		$orders = Order::getOrders( $store_number );
+		if( $store_number == "99999" ){
+			$orders = DB::table('orders')->paginate(20);
+		} else {
+			$orders = Order::getOrders( $store_number );
+		}
+
+		$orderStatusTypes = OrderStatus::all();
 		return View::make('orders/orderstable')
+			->with('types', $orderStatusTypes)
 			->with('orders', $orders);
 	}
 
+
+	public function indexByType( $type )
+	{
+		$store_number = Auth::user()->store;
+		$orders = Order::getOrdersByType( $store_number, $type );
+		$orderStatusTypes = OrderStatus::all();
+		return View::make('orders/orderstable')
+			->with('types', $orderStatusTypes)
+			->with('orders', $orders);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /ordercontorller/create
@@ -32,8 +49,10 @@ class OrderController extends \BaseController {
 	{
 		$cutomerId = Input::get('customerId');
 		//get customer info
+		$categories = Category::all();
 		$customer = Customer::find($cutomerId);
 		return View::make('orders/orderform')
+			->with('categories', $categories)
 			->with('customer', $customer);
 	}
 	/**
@@ -60,11 +79,13 @@ class OrderController extends \BaseController {
 		$orderitems = OrderItem::show($id);
 		$ordertracking = OrderTracking::show($id);
 		$ordertrackingstatus = OrderHistoryStatus::all();
+		$orderStatusTypes = OrderStatus::all();
 		//$ordertrackingstatus = OrderHistoryStatus::orderBy('created_at', 'asc')->get();
 		return View::make('orders/orderdetail')
 			->with('order', $order)
 			->with('orderitems', $orderitems)
 			->with('ordertrackingstatus', $ordertrackingstatus)
+			->with('orderstatustypes', $orderStatusTypes)
 			->with('ordertracking', $ordertracking);
 	}
 
@@ -117,5 +138,21 @@ class OrderController extends \BaseController {
 
 		$orderstatus = OrderTracking::create($orderstatusdetails);
 		$orderstatus->save();
+	}
+
+	public function postUpdateStatus()
+	{
+		if( Input::get('order_status') == 0 ){
+			return;
+		}
+
+		$id= Input::get('order_id');
+		// $orderStatus = array(
+		// 	'status' => Input::get('order_status')
+		// );
+		$order = Order::find($id);
+		$order->status = Input::get('order_status');
+		$order->save();
+		//Order::find($id)->update($orderStatus);
 	}
 }

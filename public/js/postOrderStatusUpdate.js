@@ -13,8 +13,9 @@ $(document).ready(function() {
         var userVal = $("#user").val();
         var statusVal = $("#status").val();
         var notesVal = $("#notes").val();
+        var orderStatusVal = $("#orderstatus").val();
 
-        console.log("order id: " + orderVal);
+        //console.log("order id: " + orderVal);
         //validation
         if(notesVal == '') {
             $("#notes").after('<span class="error">Oops, you forgot to say something.</span>');
@@ -22,7 +23,6 @@ $(document).ready(function() {
         }
 
         if(hasError == false) {
-
 
             $.ajax({
               type: 'POST',
@@ -43,6 +43,22 @@ $(document).ready(function() {
                 $('#notes').val('');
 
             });
+
+            $.ajax({
+              type: 'POST',
+              url: "/order/updateStatus",
+              data: { order_id: orderVal, order_status: orderStatusVal },
+              cache: false
+            }) .done(function( msg ) {
+
+                if( orderStatusVal != "0"){
+                    $( "#order-status" ).html( "Updated!" );
+                }
+
+            });
+
+
+
         }
 
     });

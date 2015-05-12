@@ -1,0 +1,66 @@
+{
+	"type": "Irons",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Shaft Flex":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Regular": "Regular",
+				"Stiff": "Stiff",
+				"X Flex": "X Flex",
+				"L Flex": "L Flex",
+				"Senior": "Senior"
+			},
+		},
+		"Shaft Material":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Steel": "Steel",
+				"Graphite": "Graphite",
+				"Combo": "Combo"
+			},
+		},
+		"Custom Fitting - Length":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Lie Angle":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Shaft":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"1 Wrap": "1 Wrap",
+				"2 Wraps": "2 Wraps",
+				"3 Wraps": "3 Wraps",
+				"4 Wraps": "4 Wraps"
+			},
+		},
+	},
+}

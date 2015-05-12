@@ -5,7 +5,7 @@ New Order
 @stop
 
 @section('breadcrumb')
-<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+<li><a href="/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
 <li><a href="/orders">Orders</a></li>
 <li class="active"> @yield('title') </li>
 @stop

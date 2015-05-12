@@ -1,0 +1,80 @@
+{
+	"type": "Woods",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Shaft Flex":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Regular": "Regular",
+				"Stiff": "Stiff",
+				"X Flex": "X Flex",
+				"L Flex": "L Flex",
+				"Senior": "Senior"
+			},
+		},
+		"Loft":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"3WD": "3WD",
+				"5WD": "5WD",
+				"7WD": "7WD",
+				"3HL": "3HL",
+				"5HL": "5HL",
+				"7HL": "7HL",
+				"3TS": "3TS",
+				"13.5": "13.5",
+				"14": "14",
+				"14.5": "14.5",
+				"15": "15",
+				"16": "16",
+				"16.5": "16.5",
+				"17": "17",
+				"18": "18",
+				"19": "19",
+				"21": "21",
+				"23": "23",
+				"27": "27",
+				"29": "29",
+				"Other": ""
+			},
+		},
+		"Custom Fitting - Length":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Shaft":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"1 Wrap": "1 Wrap",
+				"2 Wraps": "2 Wraps",
+				"3 Wraps": "3 Wraps",
+				"4 Wraps": "4 Wraps"
+			},
+		},
+	},
+}

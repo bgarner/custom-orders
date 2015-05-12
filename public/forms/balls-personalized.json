@@ -1,0 +1,67 @@
+{
+	"type": "Balls",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Font":{
+			"type": "fileupload",
+			"required": false,
+		},
+		"Logo 1 Placement":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Pole 1": "Pole 1",
+				"Pole 2": "Pole 2",
+				"Pole 3": "Pole 3",
+				"Pole 4": "Pole 4"
+			},
+		},
+
+		"Logo 2":{
+			"type": "fileupload",
+			"required": false,
+		},
+		"Logo 2 Placement":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Pole 1": "Pole 1",
+				"Pole 2": "Pole 2",
+				"Pole 3": "Pole 3",
+				"Pole 4": "Pole 4"
+			},
+		},
+
+		"Logo 3":{
+			"type": "fileupload",
+			"required": false,
+		},
+		"Logo 3 Placement":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Pole 1": "Pole 1",
+				"Pole 2": "Pole 2",
+				"Pole 3": "Pole 3",
+				"Pole 4": "Pole 4"
+			},
+		},
+
+		"Logo 4":{
+			"type": "fileupload",
+			"required": false,
+		},
+		"Logo 4 Placement":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Pole 1": "Pole 1",
+				"Pole 2": "Pole 2",
+				"Pole 3": "Pole 3",
+				"Pole 4": "Pole 4"
+			},
+		},
+	},
+}

@@ -1,0 +1,84 @@
+{
+	"type": "Hybrid",
+	"date": "May 7, 2015",
+	"version": "1.0.1",
+
+	"fields":{
+		"Dexterity":{
+			"type": "radio",
+			"required": true,
+			"options":{
+				"Left Hand": "LH",
+				"Right Hand": "RH"
+			},
+		},
+		"Shaft Flex":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"Regular": "Regular",
+				"Stiff": "Stiff",
+				"X Flex": "X Flex",
+				"L Flex": "L Flex",
+				"Senior": "Senior"
+			},
+		},
+		"Loft":{
+			"type": "dropdown",
+			"required": true,
+			"options":{
+				"2H": "2H",
+				"3H": "3H",
+				"4H": "4H",
+				"5H": "5H",
+				"6H": "6H",
+				"7H": "7H",
+				"16": "16",
+				"17": "17",
+				"18": "18",
+				"19": "19",
+				"20": "20",
+				"21": "21",
+				"22": "22",
+				"23": "23",
+				"24": "24",
+				"25": "25",
+				"26": "26",
+				"27": "27",
+				"28": "28",
+				"29": "29",
+				"30": "30",
+				"31": "31",
+				"32": "32",
+				"36": "36",
+				"Other": ""
+			},
+		},
+		"Custom Fitting - Length":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Shaft":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip":{
+			"type": "text",
+			"required": false
+		},
+		"Custom Fitting - Grip Size":{
+			"type": "dropdown"
+			"required": false,
+			"options":{
+				"Ladies": "Ladies",
+				"Regular": "Regular",
+				"Midsize": "Midsize",
+				"Jumbo": "Jumbo",
+				"1 Wrap": "1 Wrap",
+				"2 Wraps": "2 Wraps",
+				"3 Wraps": "3 Wraps",
+				"4 Wraps": "4 Wraps"
+			},
+		},
+	},
+}
