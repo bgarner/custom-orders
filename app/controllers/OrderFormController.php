@@ -42,9 +42,9 @@ class OrderFormController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+
 	}
 
 	/**
@@ -81,6 +81,44 @@ class OrderFormController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function getJsonDescription(){
+		$this->layout = null;
+		$catID = Input::get('id');
+		$categoryData = Category::find($catID);
+
+		Log::info('cat: ' . $catID );
+		Log::info('order form ID: ' . $categoryData->order_form_id );
+
+		$form = OrderForm::find($categoryData->order_form_id);
+
+		if(Request::ajax()){
+
+			/* not enough parameters */
+			if( $catID == 0 || !$catID ) {
+				$response = array(
+					'status' => 'not enough params'
+				);
+				return Response::json($response);
+			}
+
+			if( count($form) > 0) {
+				return Response::json($form);
+
+			} else {
+				/* no products found */
+				$response = array(
+					'status' => 'no form found'
+				);
+				return Response::json($response);
+			}
+
+		/* something has gone wrong with ajax */
+		} else {
+			return "I don't know if this is ajaxing";
+		}
+
 	}
 
 }

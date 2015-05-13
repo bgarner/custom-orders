@@ -6,11 +6,11 @@ $(document).ready(function() {
     //
     // $(".brandLookupByCategory").change(function(){
 
-    $("#categroies").click(function(){
+    $("#categories").click(function(){
         return false;
     });
 
-    $("#categroies").change(function(){    
+    $("#categories").change(function(){
 
         var catid = $(this).val();
 
@@ -21,7 +21,15 @@ $(document).ready(function() {
           cache: false
         })
           .done(function( msg ) {
+
               if(msg){
+
+                  if(msg.status){
+                      console.log('status: ' + msg.status);
+                      $('#brandSelectDiv').empty();
+                      return;
+                  }
+
                   console.log(msg);
 
                   var brandselectHTML = "<select class='form-control productLookUpByBrand' id='brands' name='brands'>";
@@ -36,13 +44,7 @@ $(document).ready(function() {
 
                   console.log(brandselectHTML);
               } else {
-                //   var brandselectHTML = "<select class='form-control'>"
-                //   +"<option> something </option>"
-                //     + "</select>";
-                  //
-                //   $('.brandSelect').empty();
-                //   $('.brandSelect').append(brandselectHTML);
-                //   console.log(msg);
+
               }
           });
 

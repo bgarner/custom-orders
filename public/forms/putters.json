@@ -10,7 +10,7 @@
 			"options":{
 				"Left Hand": "LH",
 				"Right Hand": "RH"
-			},
+			}
 		},
 		"Length":{
 			"type": "dropdown",
@@ -32,14 +32,14 @@
 				"41 inches": "41",
 				"42 inches": "42",
 				"Other": ""
-			},
+			}
 		},
 		"Custom Fitting - Grip":{
 			"type": "text",
 			"required": false
 		},
 		"Custom Fitting - Grip Size":{
-			"type": "dropdown"
+			"type": "dropdown",
 			"required": false,
 			"options":{
 				"Ladies": "Ladies",
@@ -65,7 +65,7 @@
 				"Superstroke The Claw (2014)": "Superstroke The Claw (2014)",
 				"Superstroke Split Grip (2014)": "Superstroke Split Grip (2014)",
 				"Other": ""
-			},
-		},
-	},
+			}
+		}
+	}
 }

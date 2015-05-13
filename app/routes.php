@@ -38,9 +38,9 @@ ORDERS
 //save new order
 
 Route::get('/order/new', array('before' => 'auth', 'uses' => 'OrderController@create'));
-Route::post('/order/new/form', 'OrderController@newForm');
+Route::post('/order/new/form', array('before' => 'auth', 'uses' => 'OrderController@newForm'));
 //Route::get('/order/new', 'OrderController@create');
-Route::put('/order/new', 'OrderController@store');
+Route::put('/order/new', array('before' => 'auth', 'uses' => 'OrderController@store'));
 //view orders
 Route::get('/orders', array('before' => 'auth', 'uses' => 'OrderController@index'));
 Route::get('/orders/{type?}', array('before' => 'auth', 'uses' => 'OrderController@indexByType'));
@@ -52,6 +52,9 @@ Route::get('/order/{id?}', array('before' => 'auth', 'uses' => 'OrderController@
 // Route::put('/order/{id?}/update', 'OrderController@update');
 Route::post('/order/postStatus', 'OrderController@postOrderStatus');
 Route::post('/order/updateStatus', 'OrderController@postUpdateStatus');
+
+Route::post('/orderform/getJsonDescription', 'OrderFormController@getJsonDescription');
+
 /*
 CUSTOMERS
 */

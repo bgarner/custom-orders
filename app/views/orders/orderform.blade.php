@@ -42,12 +42,13 @@ foreach($categories as $c) {
 ?>
 <div class="box">
     <div class="box-header with-border">
-        <h1 class="box-title">Item 1</h1>
+        <h1 class="box-title">Select a Product</h1>
 
-        {{ Form::label('categroies', 'Select a Product') }}<br />
-        {{ Form::select('categroies', $cat, null, array('class' => 'form-control brandLookupByCategory')) }}<br />
+        {{ Form::select('categories', $cat, null, array('class' => 'form-control brandLookupByCategory', 'id' => 'categories')) }}<br />
         <div id="brandSelectDiv"></div>
         <div id="productSelectDiv"></div>
+        <div id="customOptions"></div>
+
     </div>
 </div>
 
@@ -68,6 +69,7 @@ foreach($categories as $c) {
 <script src="http://objx.googlecode.com/files/objx-2.3.6.js" type="text/javascript"></script>
 <script src="/js/getBrandsInCategory.js" type="text/javascript"></script>
 <script src="/js/getProducts.js" type="text/javascript"></script>
+<script src="/js/getCustomOrderFormOptionsForProduct.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     var queries = {{ json_encode(DB::getQueryLog()) }};

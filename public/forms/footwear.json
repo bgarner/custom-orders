@@ -11,6 +11,6 @@
 		"Custom Fitting - MyJoys Custom ID":{
 			"type": "text",
 			"required": false
-		},
-	},
+		}
+	}
 }

@@ -10,7 +10,7 @@
 			"options":{
 				"Left Hand": "LH",
 				"Right Hand": "RH"
-			},
+			}
 		},
 		"Shaft Flex":{
 			"type": "dropdown",
@@ -21,7 +21,7 @@
 				"X Flex": "X Flex",
 				"L Flex": "L Flex",
 				"Senior": "Senior"
-			},
+			}
 		},
 		"Shaft Material":{
 			"type": "dropdown",
@@ -29,7 +29,7 @@
 			"options":{
 				"Steel": "Steel",
 				"Graphite": "Graphite"
-			},
+			}
 		},
 
 		"Loft":{
@@ -57,7 +57,7 @@
 				"62": "62",
 				"64": "64",
 				"Other": ""
-			},
+			}
 		},
 		"Custom Fitting - Length":{
 			"type": "text",
@@ -72,7 +72,7 @@
 			"required": false
 		},
 		"Custom Fitting - Grip Size":{
-			"type": "dropdown"
+			"type": "dropdown",
 			"required": false,
 			"options":{
 				"Ladies": "Ladies",
@@ -83,7 +83,7 @@
 				"2 Wraps": "2 Wraps",
 				"3 Wraps": "3 Wraps",
 				"4 Wraps": "4 Wraps"
-			},
-		},
-	},
+			}
+		}
+	}
 }

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $("#brandSelectDiv").change(function(){
 
-        var cat = $('#categroies').val();
+        var cat = $('#categories').val();
         var brand = $('#brands').val();
 
         console.log('cat:' + cat);
@@ -19,7 +19,15 @@ $(document).ready(function() {
           cache: false
         })
           .done(function( msg ) {
+
               if(msg){
+
+                  if(msg.status){
+                      console.log('status: ' + msg.status);
+                      $('#productSelectDiv').empty();
+                      return;
+                  }
+
                   console.log(msg);
 
                   var productsHTML = "<select class='form-control' id='products' name='products'>";
@@ -39,14 +47,10 @@ $(document).ready(function() {
                   $('#productSelectDiv').append(productsHTML);
 
                   console.log(productsHTML);
-              } else {
-                //   var brandselectHTML = "<select class='form-control'>"
-                //   +"<option> something </option>"
-                //     + "</select>";
-                  //
-                //   $('.brandSelect').empty();
-                //   $('.brandSelect').append(brandselectHTML);
-                //   console.log(msg);
+
+
+              } else  {
+
               }
           });
 

@@ -108,17 +108,26 @@ class ProductController extends \BaseController {
 
 		if(Request::ajax()){
 
+			/* not enough parameters */
+			if( $id== 0 || !$id ) {
+				$response = array(
+					'status' => 'not enough params'
+				);
+				return Response::json($response);
+			}
+
 			if( count($brandNames) > 0) {
 				return Response::json($brandNames);
 			} else {
+				/* no brands in that category */
 				$response = array(
-					'status' => '',
-					'msg' => 'not found',
+					'status' => 'no brands',
 				);
 				return Response::json($response);
 			}
 
 		} else {
+			/* something has gone wrong with ajax */
 			return "I don't know if this is ajaxing";
 		}
 	}
@@ -138,16 +147,25 @@ class ProductController extends \BaseController {
 
 		if(Request::ajax()){
 
-			if( count($products) > 0) {
-				return Response::json($products);
-			} else {
+			/* not enough parameters */
+			if( $catID == 0 || !$catID || $brandID == 0 || !$brandID ) {
 				$response = array(
-					'status' => '',
-					'msg' => 'not found',
+					'status' => 'not enough params'
 				);
 				return Response::json($response);
 			}
 
+			if( count($products) > 0) {
+				return Response::json($products);
+			} else {
+				/* no products found */
+				$response = array(
+					'status' => 'no products'
+				);
+				return Response::json($response);
+			}
+
+		/* something has gone wrong with ajax */
 		} else {
 			return "I don't know if this is ajaxing";
 		}

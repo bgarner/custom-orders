@@ -6,7 +6,7 @@
 	"fields":{
 		"Font":{
 			"type": "fileupload",
-			"required": false,
+			"required": false
 		},
 		"Logo 1 Placement":{
 			"type": "dropdown",
@@ -16,12 +16,11 @@
 				"Pole 2": "Pole 2",
 				"Pole 3": "Pole 3",
 				"Pole 4": "Pole 4"
-			},
+			}
 		},
-
 		"Logo 2":{
 			"type": "fileupload",
-			"required": false,
+			"required": false
 		},
 		"Logo 2 Placement":{
 			"type": "dropdown",
@@ -31,12 +30,12 @@
 				"Pole 2": "Pole 2",
 				"Pole 3": "Pole 3",
 				"Pole 4": "Pole 4"
-			},
+			}
 		},
 
 		"Logo 3":{
 			"type": "fileupload",
-			"required": false,
+			"required": false
 		},
 		"Logo 3 Placement":{
 			"type": "dropdown",
@@ -46,12 +45,12 @@
 				"Pole 2": "Pole 2",
 				"Pole 3": "Pole 3",
 				"Pole 4": "Pole 4"
-			},
+			}
 		},
 
 		"Logo 4":{
 			"type": "fileupload",
-			"required": false,
+			"required": false
 		},
 		"Logo 4 Placement":{
 			"type": "dropdown",
@@ -61,7 +60,7 @@
 				"Pole 2": "Pole 2",
 				"Pole 3": "Pole 3",
 				"Pole 4": "Pole 4"
-			},
-		},
-	},
+			}
+		}
+	}
 }
