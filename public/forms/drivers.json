@@ -5,6 +5,7 @@
 
 	"fields":{
 		"Dexterity":{
+			"label": "Dexterity",
 			"type": "radio",
 			"required": true,
 			"options":{
@@ -20,6 +21,7 @@
 				"Stiff": "Stiff",
 				"X Flex": "X Flex",
 				"L Flex": "L Flex",
+				"A Flex": "A Flex",
 				"Senior": "Senior"
 			}
 		},
