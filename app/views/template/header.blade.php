@@ -2,6 +2,8 @@
 
 if( Auth::user()->store == "99999") {
     $storenumber = "Head Office";
+} else{
+    $storenumber = Auth::user()->store;
 }
 ?>
 <!-- header logo: style can be found in header.less -->
